@@ -38,6 +38,7 @@ return [
         'qrcbn' => 'QRCBN',
         'editor' => 'editor',
         'book_layout' => 'layout',
+        'cover_designer' => 'cover',
         'price' => 'harga',
         'cover' => 'sampul',
         'ebook' => 'file e-book',

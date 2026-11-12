@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Post;
+use App\Models\Slide;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -14,6 +15,7 @@ class HomeController extends Controller
             'catalog' => Book::query()->active()->forSale()->latest()->take(4)->get(),
             'upcoming' => Book::query()->active()->upcoming()->latest()->take(3)->get(),
             'posts' => Post::query()->published()->take(3)->get(),
+            'slides' => Slide::query()->orderBy('sort_order')->orderBy('id')->get(),
             'heroBooks' => Book::query()->active()->where(function ($query) {
                 $query->where('for_sale', true)->orWhere('upcoming', true);
             })->latest()->take(3)->get(),

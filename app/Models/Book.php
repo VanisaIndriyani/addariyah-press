@@ -19,6 +19,7 @@ class Book extends Model
         'qrcbn',
         'editor',
         'book_layout',
+        'cover_designer',
         'price',
         'for_sale',
         'upcoming',

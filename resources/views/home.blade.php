@@ -33,6 +33,85 @@
         </div>
     </section>
 
+    @if ($slides->isNotEmpty())
+        <section class="cert-slider" data-slider aria-roledescription="carousel" aria-label="Sertifikat dan piagam">
+            <div class="cert-viewport">
+                <div class="cert-track">
+                    @foreach ($slides as $slide)
+                        <figure class="cert-slide">
+                            <img src="{{ asset($slide->image_path) }}" alt="{{ $slide->title }}">
+                            <figcaption>
+                                <strong>{{ $slide->title }}</strong>
+                                @if ($slide->caption)
+                                    <span>{{ $slide->caption }}</span>
+                                @endif
+                            </figcaption>
+                        </figure>
+                    @endforeach
+                </div>
+            </div>
+            @if ($slides->count() > 1)
+                <button class="cert-arrow cert-prev" type="button" data-slider-prev aria-label="Gambar sebelumnya">‹</button>
+                <button class="cert-arrow cert-next" type="button" data-slider-next aria-label="Gambar berikutnya">›</button>
+                <div class="cert-dots">
+                    @foreach ($slides as $slide)
+                        <button type="button" data-slider-dot="{{ $loop->index }}" aria-label="Gambar {{ $loop->iteration }}" @if ($loop->first) aria-current="true" @endif></button>
+                    @endforeach
+                </div>
+            @endif
+        </section>
+        @if ($slides->count() > 1)
+            <script>
+                (function () {
+                    var root = document.querySelector('[data-slider]');
+                    if (!root) return;
+                    var track = root.querySelector('.cert-track');
+                    var slides = root.querySelectorAll('.cert-slide');
+                    var dots = root.querySelectorAll('[data-slider-dot]');
+                    var index = 0;
+                    var timer = null;
+
+                    function show(next) {
+                        index = (next + slides.length) % slides.length;
+                        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+                        dots.forEach(function (dot, i) {
+                            if (i === index) dot.setAttribute('aria-current', 'true');
+                            else dot.removeAttribute('aria-current');
+                        });
+                    }
+
+                    function start() {
+                        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                        stop();
+                        timer = setInterval(function () { show(index + 1); }, 4500);
+                    }
+
+                    function stop() {
+                        if (timer) clearInterval(timer);
+                    }
+
+                    root.querySelector('[data-slider-prev]').addEventListener('click', function () {
+                        show(index - 1);
+                        start();
+                    });
+                    root.querySelector('[data-slider-next]').addEventListener('click', function () {
+                        show(index + 1);
+                        start();
+                    });
+                    dots.forEach(function (dot) {
+                        dot.addEventListener('click', function () {
+                            show(Number(dot.getAttribute('data-slider-dot')));
+                            start();
+                        });
+                    });
+                    root.addEventListener('mouseenter', stop);
+                    root.addEventListener('mouseleave', start);
+                    start();
+                })();
+            </script>
+        @endif
+    @endif
+
     <section class="band">
         <div class="container band-grid">
             <div>

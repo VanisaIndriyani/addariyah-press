@@ -74,6 +74,7 @@
                             'QRCBN' => $book->qrcbn,
                             'Editor' => $book->editor,
                             'Layout' => $book->book_layout,
+                            'Cover' => $book->cover_designer,
                             'Perkiraan terbit' => $book->expected_label,
                         ], fn ($value) => filled($value));
                     @endphp

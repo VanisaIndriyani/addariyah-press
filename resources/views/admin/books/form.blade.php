@@ -67,6 +67,10 @@
                         <input id="book_layout" name="book_layout" value="{{ old('book_layout', $book->book_layout) }}">
                     </div>
                     <div class="field">
+                        <label for="cover_designer">Cover</label>
+                        <input id="cover_designer" name="cover_designer" value="{{ old('cover_designer', $book->cover_designer) }}" placeholder="Nama desainer sampul">
+                    </div>
+                    <div class="field">
                         <label for="price">Harga (Rp)</label>
                         <input id="price" type="number" name="price" min="0" step="1" value="{{ old('price', $book->price !== null ? (int) $book->price : '') }}">
                         <p class="help">Wajib diisi jika buku dijual di katalog.</p>

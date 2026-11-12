@@ -36,6 +36,7 @@
             @auth
                 <a href="{{ route('admin.dashboard') }}">Admin</a>
             @endauth
+            <a href="https://addariyah.repositoryiaiddisidrap.com/index.php/ebooks/index" target="_blank" rel="noopener">OMP Addariyah</a>
         </nav>
     </div>
 </header>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ManuscriptController as AdminManuscriptController
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ResourceController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
@@ -73,6 +74,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/e-catalog', [AdminEcatalogController::class, 'store'])->name('ecatalog.store');
         Route::put('/e-catalog/{ecatalog}', [AdminEcatalogController::class, 'update'])->name('ecatalog.update');
         Route::delete('/e-catalog/{ecatalog}', [AdminEcatalogController::class, 'destroy'])->name('ecatalog.destroy');
+
+        Route::get('/slide', [SlideController::class, 'index'])->name('slides.index');
+        Route::post('/slide', [SlideController::class, 'store'])->name('slides.store');
+        Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('slides.update');
+        Route::delete('/slide/{slide}', [SlideController::class, 'destroy'])->name('slides.destroy');
 
         Route::get('/pengaturan', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('/pengaturan', [SettingController::class, 'update'])->name('settings.update');

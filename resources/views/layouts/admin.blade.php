@@ -45,6 +45,10 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5h15v11h-15z"/><path d="m4.5 8 7.5 6 7.5-6"/></svg>
                     Naskah masuk
                 </a>
+                <a href="{{ route('admin.slides.index') }}" @class(['is-active' => request()->routeIs('admin.slides.*')])>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v11h-15z"/><path d="m9 15 2-2 1.5 1.5L15 11.5l2 3.5"/><circle cx="9" cy="10" r="1"/></svg>
+                    Slide beranda
+                </a>
                 <a href="{{ route('admin.ecatalog.index') }}" @class(['is-active' => request()->routeIs('admin.ecatalog.*')])>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v12h-15z"/><path d="m8 14.5 2.2-2.2 1.6 1.6 2.4-3 2.3 3.6"/><circle cx="9" cy="9.5" r="1"/></svg>
                     E-Catalog
