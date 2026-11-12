@@ -67,7 +67,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/naskah-masuk', [AdminManuscriptController::class, 'index'])->name('manuscripts.index');
         Route::get('/naskah-masuk/{manuscript}', [AdminManuscriptController::class, 'show'])->name('manuscripts.show');
-        Route::get('/naskah-masuk/{manuscript}/berkas', [AdminManuscriptController::class, 'file'])->name('manuscripts.file');
+        Route::get('/naskah-masuk/{manuscript}/berkas/{kind}', [AdminManuscriptController::class, 'file'])
+            ->whereIn('kind', ['pernyataan', 'keaslian', 'cover', 'dummy', 'buku'])
+            ->name('manuscripts.file');
         Route::delete('/naskah-masuk/{manuscript}', [AdminManuscriptController::class, 'destroy'])->name('manuscripts.destroy');
 
         Route::get('/e-catalog', [AdminEcatalogController::class, 'index'])->name('ecatalog.index');

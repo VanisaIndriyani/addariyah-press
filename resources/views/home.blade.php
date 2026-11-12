@@ -60,56 +60,57 @@
                 </div>
             @endif
         </section>
-        @if ($slides->count() > 1)
-            <script>
-                (function () {
-                    var root = document.querySelector('[data-slider]');
-                    if (!root) return;
-                    var track = root.querySelector('.cert-track');
-                    var slides = root.querySelectorAll('.cert-slide');
-                    var dots = root.querySelectorAll('[data-slider-dot]');
-                    var index = 0;
-                    var timer = null;
+    @endif
 
-                    function show(next) {
-                        index = (next + slides.length) % slides.length;
-                        track.style.transform = 'translateX(' + (-index * 100) + '%)';
-                        dots.forEach(function (dot, i) {
-                            if (i === index) dot.setAttribute('aria-current', 'true');
-                            else dot.removeAttribute('aria-current');
-                        });
-                    }
+    @if ($slides->count() > 1)
+        <script>
+            (function () {
+                var root = document.querySelector('[data-slider]');
+                if (!root) return;
+                var track = root.querySelector('.cert-track');
+                var slides = root.querySelectorAll('.cert-slide');
+                var dots = root.querySelectorAll('[data-slider-dot]');
+                var index = 0;
+                var timer = null;
 
-                    function start() {
-                        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-                        stop();
-                        timer = setInterval(function () { show(index + 1); }, 4500);
-                    }
-
-                    function stop() {
-                        if (timer) clearInterval(timer);
-                    }
-
-                    root.querySelector('[data-slider-prev]').addEventListener('click', function () {
-                        show(index - 1);
-                        start();
+                function show(next) {
+                    index = (next + slides.length) % slides.length;
+                    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+                    dots.forEach(function (dot, i) {
+                        if (i === index) dot.setAttribute('aria-current', 'true');
+                        else dot.removeAttribute('aria-current');
                     });
-                    root.querySelector('[data-slider-next]').addEventListener('click', function () {
-                        show(index + 1);
-                        start();
-                    });
-                    dots.forEach(function (dot) {
-                        dot.addEventListener('click', function () {
-                            show(Number(dot.getAttribute('data-slider-dot')));
-                            start();
-                        });
-                    });
-                    root.addEventListener('mouseenter', stop);
-                    root.addEventListener('mouseleave', start);
+                }
+
+                function start() {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    stop();
+                    timer = setInterval(function () { show(index + 1); }, 4500);
+                }
+
+                function stop() {
+                    if (timer) clearInterval(timer);
+                }
+
+                root.querySelector('[data-slider-prev]').addEventListener('click', function () {
+                    show(index - 1);
                     start();
-                })();
-            </script>
-        @endif
+                });
+                root.querySelector('[data-slider-next]').addEventListener('click', function () {
+                    show(index + 1);
+                    start();
+                });
+                dots.forEach(function (dot) {
+                    dot.addEventListener('click', function () {
+                        show(Number(dot.getAttribute('data-slider-dot')));
+                        start();
+                    });
+                });
+                root.addEventListener('mouseenter', stop);
+                root.addEventListener('mouseleave', start);
+                start();
+            })();
+        </script>
     @endif
 
     <section class="band">

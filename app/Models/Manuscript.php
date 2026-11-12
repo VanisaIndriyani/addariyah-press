@@ -13,6 +13,10 @@ class Manuscript extends Model
         'title',
         'category',
         'message',
+        'statement_path',
+        'originality_path',
+        'cover_path',
+        'dummy_path',
         'file_path',
     ];
 }

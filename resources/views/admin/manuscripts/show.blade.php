@@ -9,7 +9,13 @@
             $digits = '62'.substr($digits, 1);
         }
         $initial = mb_strtoupper(mb_substr(trim($manuscript->name), 0, 1));
-        $extension = strtoupper(pathinfo((string) $manuscript->file_path, PATHINFO_EXTENSION) ?: 'FILE');
+        $files = array_filter([
+            'pernyataan' => ['Surat pernyataan', $manuscript->statement_path],
+            'keaslian' => ['Suket keaslian karya', $manuscript->originality_path],
+            'cover' => ['Cover', $manuscript->cover_path],
+            'dummy' => ['Dummy', $manuscript->dummy_path],
+            'buku' => ['File buku', $manuscript->file_path],
+        ], fn ($file) => filled($file[1]));
     @endphp
 
     <div class="admin-top ms-top">
@@ -35,7 +41,7 @@
                 <span class="ms-avatar" aria-hidden="true">{{ $initial !== '' ? $initial : '?' }}</span>
                 <div>
                     <strong>{{ $manuscript->name }}</strong>
-                    <p class="muted">Pengirim</p>
+                    <p class="muted">Penulis</p>
                 </div>
             </div>
             <dl class="ms-meta">
@@ -67,15 +73,21 @@
             @else
                 <p class="muted">Penulis tidak menyertakan pesan.</p>
             @endif
-            <div class="ms-file">
-                <div class="ms-file-body">
-                    <span class="ms-file-mark">{{ $extension }}</span>
-                    <div>
-                        <strong>Berkas naskah</strong>
-                        <p class="muted">Siap diunduh</p>
+            <div class="ms-files">
+                @forelse ($files as $kind => [$label, $path])
+                    <div class="ms-file">
+                        <div class="ms-file-body">
+                            <span class="ms-file-mark">{{ strtoupper(pathinfo((string) $path, PATHINFO_EXTENSION) ?: 'FILE') }}</span>
+                            <div>
+                                <strong>{{ $label }}</strong>
+                                <p class="muted">Siap diunduh</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary" href="{{ route('admin.manuscripts.file', [$manuscript, $kind]) }}">Unduh</a>
                     </div>
-                </div>
-                <a class="btn btn-primary" href="{{ route('admin.manuscripts.file', $manuscript) }}">Unduh naskah</a>
+                @empty
+                    <p class="muted">Belum ada berkas.</p>
+                @endforelse
             </div>
         </section>
     </div>

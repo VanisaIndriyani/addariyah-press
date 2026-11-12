@@ -65,7 +65,11 @@ class ManuscriptPageController extends Controller
             'title' => ['required', 'string', 'max:180'],
             'category' => ['nullable', 'string', 'max:100'],
             'message' => ['nullable', 'string', 'max:3000'],
-            'file' => ['required', 'file', 'mimes:pdf,doc,docx,rtf', 'max:10240'],
+            'statement' => ['required', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:10240'],
+            'originality' => ['required', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:10240'],
+            'cover' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'dummy' => ['required', 'file', 'mimes:pdf,doc,docx,jpg,jpeg,png', 'max:10240'],
+            'book' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:20480'],
         ]);
 
         Manuscript::query()->create([
@@ -75,7 +79,11 @@ class ManuscriptPageController extends Controller
             'title' => $data['title'],
             'category' => $data['category'] ?? null,
             'message' => $data['message'] ?? null,
-            'file_path' => Uploader::privateFile($request->file('file'), 'naskah'),
+            'statement_path' => Uploader::privateFile($request->file('statement'), 'naskah'),
+            'originality_path' => Uploader::privateFile($request->file('originality'), 'naskah'),
+            'cover_path' => Uploader::privateFile($request->file('cover'), 'naskah'),
+            'dummy_path' => Uploader::privateFile($request->file('dummy'), 'naskah'),
+            'file_path' => Uploader::privateFile($request->file('book'), 'naskah'),
         ]);
 
         return redirect()

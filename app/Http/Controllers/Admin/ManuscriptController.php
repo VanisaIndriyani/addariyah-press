@@ -36,17 +36,29 @@ class ManuscriptController extends Controller
         return view('admin.manuscripts.show', compact('manuscript'));
     }
 
-    public function file(Manuscript $manuscript): BinaryFileResponse
+    public function file(Manuscript $manuscript, string $kind): BinaryFileResponse
     {
-        $path = Uploader::privatePath($manuscript->file_path);
+        $column = [
+            'pernyataan' => 'statement_path',
+            'keaslian' => 'originality_path',
+            'cover' => 'cover_path',
+            'dummy' => 'dummy_path',
+            'buku' => 'file_path',
+        ][$kind] ?? null;
+
+        abort_unless($column, 404);
+
+        $path = Uploader::privatePath($manuscript->{$column});
         abort_unless($path, 404);
 
-        return response()->download($path, basename($path));
+        return response()->download($path, $kind.'-'.basename($path));
     }
 
     public function destroy(Manuscript $manuscript): RedirectResponse
     {
-        Uploader::deletePrivate($manuscript->file_path);
+        foreach (['statement_path', 'originality_path', 'cover_path', 'dummy_path', 'file_path'] as $column) {
+            Uploader::deletePrivate($manuscript->{$column});
+        }
         $manuscript->delete();
 
         return redirect()->route('admin.manuscripts.index')->with('success', 'Naskah dihapus.');
