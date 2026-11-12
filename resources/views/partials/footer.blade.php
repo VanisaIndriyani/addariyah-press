@@ -43,11 +43,14 @@
                 @if($instagram)
                     <li><a href="{{ $instagram }}" target="_blank" rel="noopener">Instagram</a></li>
                 @endif
-                @if(\App\Support\Site::get('address'))
-                    <li>{{ \App\Support\Site::get('address') }}</li>
-                @endif
             </ul>
         </div>
+        @if(\App\Support\Site::get('address'))
+            <div>
+                <h3>Alamat</h3>
+                <p class="footer-address">{!! nl2br(e(\App\Support\Site::get('address'))) !!}</p>
+            </div>
+        @endif
     </div>
     <div class="container legal">{{ $name }} · Pembayaran e-book lewat QRIS, konfirmasi bukti ke WhatsApp.</div>
 </footer>

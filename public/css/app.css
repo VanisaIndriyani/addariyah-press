@@ -290,11 +290,12 @@ p { margin: 0 0 1rem; }
 .path-grid strong { display: block; font-family: var(--serif); font-size: 1.7rem; margin-bottom: .4rem; }
 
 .site-footer { background: var(--green-950); color: rgba(255,255,255,.86); padding: 3rem 0 1.4rem; margin-top: 1rem; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr .8fr .8fr 1fr; gap: 1.5rem; }
+.footer-grid { display: grid; grid-template-columns: 1.3fr .7fr .7fr .8fr 1fr; gap: 1.5rem; }
 .site-footer a { color: white; text-decoration: none; }
 .site-footer h3 { color: white; font-size: 1.15rem; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin: .35rem 0; }
+.footer-address { margin: 0; max-width: 28ch; }
 .legal { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1rem; color: rgba(255,255,255,.62); font-size: .88rem; }
 .footer-brand { display: flex; gap: .75rem; align-items: center; margin-bottom: .8rem; }
 .footer-brand img { width: 46px; height: 46px; object-fit: contain; }

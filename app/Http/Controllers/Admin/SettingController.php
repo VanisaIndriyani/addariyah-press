@@ -40,7 +40,7 @@ class SettingController extends Controller
             'about' => ['nullable', 'string'],
             'whatsapp' => ['required', 'string', 'max:30'],
             'email' => ['nullable', 'email', 'max:150'],
-            'address' => ['nullable', 'string', 'max:255'],
+            'address' => ['nullable', 'string', 'max:500'],
             'instagram' => ['nullable', 'string', 'max:160'],
             'qris' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
             'password' => ['nullable', 'confirmed', 'min:8'],

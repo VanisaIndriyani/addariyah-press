@@ -42,9 +42,10 @@
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email', $settings['email']) }}">
             </div>
-            <div class="field">
+            <div class="field span-2">
                 <label for="address">Alamat</label>
-                <input id="address" name="address" value="{{ old('address', $settings['address']) }}">
+                <textarea id="address" name="address" rows="3" placeholder="Jl. Tugu Tani, Majjelling Wattang, Maritengngae, Sidenreng Rappang, Sulawesi Selatan.">{{ old('address', $settings['address']) }}</textarea>
+                <p class="help">Tampil di kolom Alamat pada footer. Pisahkan baris dengan Enter.</p>
             </div>
             <div class="field">
                 <label for="instagram">Instagram</label>
