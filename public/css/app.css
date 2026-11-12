@@ -209,6 +209,8 @@ p { margin: 0 0 1rem; }
 .spec-grid div { background: white; border: 1px solid var(--line); border-radius: 14px; padding: .75rem .85rem; }
 .spec-grid dt { color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .spec-grid dd { margin: .2rem 0 0; font-weight: 700; }
+.spec-cover img { width: 100%; max-height: 160px; object-fit: contain; margin-top: .35rem; border-radius: 8px; background: var(--paper); }
+.spec-cover span { display: block; margin-top: .35rem; }
 .related { margin-top: 3.5rem; }
 .facts { display: grid; grid-template-columns: 140px 1fr; gap: .35rem .8rem; margin: 1rem 0 1.2rem; }
 .facts dt { color: var(--muted); }

@@ -74,7 +74,6 @@
                             'QRCBN' => $book->qrcbn,
                             'Editor' => $book->editor,
                             'Layout' => $book->book_layout,
-                            'Cover' => $book->cover_designer,
                             'Perkiraan terbit' => $book->expected_label,
                         ], fn ($value) => filled($value));
                     @endphp
@@ -87,6 +86,17 @@
                                     <dd>{{ $value }}</dd>
                                 </div>
                             @endforeach
+                            @if ($book->cover_path)
+                                <div class="spec-cover">
+                                    <dt>Cover</dt>
+                                    <dd>
+                                        <img src="{{ asset($book->cover_path) }}" alt="Cover {{ $book->title }}">
+                                        @if ($book->cover_designer)
+                                            <span>{{ $book->cover_designer }}</span>
+                                        @endif
+                                    </dd>
+                                </div>
+                            @endif
                         </dl>
                     @endif
                 </div>

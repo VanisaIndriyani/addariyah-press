@@ -67,7 +67,7 @@
                         <input id="book_layout" name="book_layout" value="{{ old('book_layout', $book->book_layout) }}">
                     </div>
                     <div class="field">
-                        <label for="cover_designer">Cover</label>
+                        <label for="cover_designer">Desainer cover</label>
                         <input id="cover_designer" name="cover_designer" value="{{ old('cover_designer', $book->cover_designer) }}" placeholder="Nama desainer sampul">
                     </div>
                     <div class="field">
@@ -96,7 +96,7 @@
                     <div class="field">
                         <label for="cover">Sampul</label>
                         <input id="cover" type="file" name="cover" accept="image/*" @required(! $book->exists)>
-                        <p class="help">JPG, PNG, atau WEBP. Maksimal 4 MB.</p>
+                        <p class="help">JPG, PNG, atau WEBP. Maksimal 4 MB. Gambar ini tampil di kotak Cover pada halaman buku.</p>
                         @if ($book->cover_path)
                             <img class="preview preview-lg" src="{{ asset($book->cover_path) }}" alt="Sampul saat ini">
                         @endif
