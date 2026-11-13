@@ -72,21 +72,12 @@
                 var dots = root.querySelectorAll('[data-slider-dot]');
                 var index = 0;
                 var timer = null;
-                var phone = window.matchMedia('(max-width: 760px)');
-
                 var viewport = root.querySelector('.cert-viewport');
 
                 function show(next) {
                     index = (next + slides.length) % slides.length;
-                    if (phone.matches) {
-                        viewport.style.height = '';
-                        track.style.transform = 'translateX(' + (-index * 100) + '%)';
-                    } else {
-                        var offset = 0;
-                        for (var i = 0; i < index; i++) offset += slides[i].offsetHeight;
-                        viewport.style.height = slides[index].offsetHeight + 'px';
-                        track.style.transform = 'translateY(' + (-offset) + 'px)';
-                    }
+                    viewport.style.height = '';
+                    track.style.transform = 'translateX(' + (-index * viewport.offsetWidth) + 'px)';
                     dots.forEach(function (dot, i) {
                         if (i === index) dot.setAttribute('aria-current', 'true');
                         else dot.removeAttribute('aria-current');
@@ -122,10 +113,6 @@
                 });
                 root.addEventListener('mouseenter', stop);
                 root.addEventListener('mouseleave', start);
-                phone.addEventListener('change', function () {
-                    show(0);
-                    start();
-                });
                 window.addEventListener('resize', function () { show(index); });
                 slides.forEach(function (slide) {
                     var image = slide.querySelector('img');
