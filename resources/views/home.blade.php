@@ -74,9 +74,19 @@
                 var timer = null;
                 var phone = window.matchMedia('(max-width: 760px)');
 
+                var viewport = root.querySelector('.cert-viewport');
+
                 function show(next) {
                     index = (next + slides.length) % slides.length;
-                    track.style.transform = phone.matches ? 'translateX(' + (-index * 100) + '%)' : '';
+                    if (phone.matches) {
+                        viewport.style.height = '';
+                        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+                    } else {
+                        var offset = 0;
+                        for (var i = 0; i < index; i++) offset += slides[i].offsetHeight;
+                        viewport.style.height = slides[index].offsetHeight + 'px';
+                        track.style.transform = 'translateY(' + (-offset) + 'px)';
+                    }
                     dots.forEach(function (dot, i) {
                         if (i === index) dot.setAttribute('aria-current', 'true');
                         else dot.removeAttribute('aria-current');
@@ -84,9 +94,8 @@
                 }
 
                 function start() {
-                    if (!phone.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                         stop();
-                        track.style.transform = '';
                         return;
                     }
                     stop();
@@ -117,7 +126,13 @@
                     show(0);
                     start();
                 });
+                window.addEventListener('resize', function () { show(index); });
+                slides.forEach(function (slide) {
+                    var image = slide.querySelector('img');
+                    if (image && !image.complete) image.addEventListener('load', function () { show(index); });
+                });
                 start();
+                show(0);
             })();
         </script>
     @endif
