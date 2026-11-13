@@ -53,6 +53,10 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v12h-15z"/><path d="m8 14.5 2.2-2.2 1.6 1.6 2.4-3 2.3 3.6"/><circle cx="9" cy="9.5" r="1"/></svg>
                     E-Catalog
                 </a>
+                <a href="{{ route('admin.profile.edit') }}" @class(['is-active' => request()->routeIs('admin.profile.*', 'admin.contacts.*')])>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.5a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"/><path d="M5.5 19.2a6.5 6.5 0 0 1 13 0"/><path d="M4.5 4.5h15v15h-15z"/></svg>
+                    Profil & kontak
+                </a>
                 <a href="{{ route('admin.settings.edit') }}" @class(['is-active' => request()->routeIs('admin.settings.*')])>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6 6l1.6 1.6M16.4 16.4 18 18M18 6l-1.6 1.6M7.6 16.4 6 18"/></svg>
                     Pengaturan

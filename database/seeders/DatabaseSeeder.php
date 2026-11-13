@@ -32,6 +32,16 @@ class DatabaseSeeder extends Seeder
             'about' => "Addariyah Press menerima naskah, menyunting, menata halaman, lalu menerbitkannya sebagai buku.\n\nBuku yang sudah terbit ditampilkan di katalog dan bisa dibeli sebagai e-book. Pembeli membayar lewat QRIS, kemudian mengirim bukti pembayaran ke WhatsApp penerbit.\n\nPenulis dapat membaca pedoman, mengunduh template, dan mengirim naskah langsung dari website.",
             'pedoman' => "Naskah dikirim dalam bahasa yang sudah dirapikan. Gunakan susunan bab yang jelas dan data yang bisa ditelusuri.\n\nHalaman\nGunakan kertas A4. Margin atas 4 cm, kiri 4 cm, kanan 3 cm, dan bawah 3 cm. Huruf isi 12 pt dengan spasi 1,5. Nomor halaman diletakkan di kaki halaman.\n\nSusunan berkas\nHalaman judul memuat judul, nama penulis, dan keterangan bahwa naskah diajukan ke Addariyah Press. Setelah itu daftar isi, isi bab, daftar pustaka, lalu identitas singkat penulis.\n\nKutipan\nKutipan pendek menyatu dalam paragraf dan diberi tanda kutip. Kutipan yang lebih panjang ditulis dalam paragraf tersendiri, menjorok ke dalam, tanpa tanda kutip.\n\nDaftar pustaka\nCantumkan nama penulis, tahun, judul, kota, dan penerbit. Urutkan berdasarkan nama belakang penulis.\n\nPengiriman\nKirim berkas PDF atau DOCX lewat formulir Kirim Naskah. Tuliskan sinopsis singkat di kolom pesan. Tim penerbit meninjau kiriman, lalu membalas lewat kontak yang dicantumkan.",
             'qris_image' => '',
+            'visi' => 'Menjadi penerbit yang mendampingi penulis sampai naskahnya menjadi buku yang rapi, terbaca, dan siap beredar.',
+            'misi' => "Menyunting dan menata naskah dengan teliti.\nMenyiapkan buku dengan ISBN dan QRCBN.\nMenyediakan katalog e-book yang bisa dibeli secara online.",
+            'map_embed' => '',
+            'office_hours' => '',
+            'band_1_title' => 'Penerbitan',
+            'band_1_text' => 'Naskah disunting, ditata, lalu disiapkan dengan ISBN dan QRCBN.',
+            'band_2_title' => 'Katalog digital',
+            'band_2_text' => 'E-book yang sudah terbit bisa dibeli. Bayar dengan QRIS, konfirmasi lewat WhatsApp.',
+            'band_3_title' => 'Naskah masuk',
+            'band_3_text' => 'Ada pedoman, template, dan formulir kirim naskah untuk penulis.',
         ];
 
         foreach ($settings as $key => $value) {

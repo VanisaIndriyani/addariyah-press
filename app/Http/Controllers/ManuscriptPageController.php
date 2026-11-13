@@ -49,7 +49,10 @@ class ManuscriptPageController extends Controller
 
     public function create(): View
     {
-        return view('manuscript.create');
+        return view('manuscript.create', [
+            'sampleStatement' => Site::get('sample_statement', ''),
+            'sampleOriginality' => Site::get('sample_originality', ''),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse

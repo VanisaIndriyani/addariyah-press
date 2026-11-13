@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EcatalogController as AdminEcatalogController;
 use App\Http\Controllers\Admin\ManuscriptController as AdminManuscriptController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ResourceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SlideController;
@@ -33,7 +34,10 @@ Route::get('/naskah/template', [ManuscriptPageController::class, 'templates'])->
 Route::get('/naskah/kirim', [ManuscriptPageController::class, 'create'])->name('manuscripts.create');
 Route::post('/naskah/kirim', [ManuscriptPageController::class, 'store'])->middleware('throttle:8,1')->name('manuscripts.store');
 Route::get('/e-catalog', [EcatalogController::class, 'index'])->name('ecatalog');
-Route::get('/tentang', [PageController::class, 'about'])->name('about');
+Route::get('/profil', [PageController::class, 'profile'])->name('profile');
+Route::get('/tentang', [PageController::class, 'profile'])->name('about');
+Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
+Route::post('/kontak', [PageController::class, 'sendContact'])->middleware('throttle:8,1')->name('contact.store');
 
 Route::get('/keranjang', [CartController::class, 'index'])->name('cart');
 Route::post('/keranjang/{book:slug}', [CartController::class, 'store'])->name('cart.store');
@@ -61,6 +65,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/naskah', [ResourceController::class, 'index'])->name('resources.index');
         Route::put('/naskah/pedoman', [ResourceController::class, 'updateGuide'])->name('resources.guide');
+        Route::put('/naskah/contoh', [ResourceController::class, 'updateSamples'])->name('resources.samples');
         Route::post('/naskah/berkas', [ResourceController::class, 'store'])->name('resources.store');
         Route::put('/naskah/berkas/{download}', [ResourceController::class, 'update'])->name('resources.update');
         Route::delete('/naskah/berkas/{download}', [ResourceController::class, 'destroy'])->name('resources.destroy');
@@ -81,6 +86,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/slide', [SlideController::class, 'store'])->name('slides.store');
         Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('slides.update');
         Route::delete('/slide/{slide}', [SlideController::class, 'destroy'])->name('slides.destroy');
+
+        Route::get('/profil', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profil', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/kontak-person', [ProfileController::class, 'storeContact'])->name('contacts.store');
+        Route::put('/kontak-person/{contact}', [ProfileController::class, 'updateContact'])->name('contacts.update');
+        Route::delete('/kontak-person/{contact}', [ProfileController::class, 'destroyContact'])->name('contacts.destroy');
+        Route::delete('/pesan-kontak/{message}', [ProfileController::class, 'destroyMessage'])->name('messages.destroy');
 
         Route::get('/pengaturan', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('/pengaturan', [SettingController::class, 'update'])->name('settings.update');

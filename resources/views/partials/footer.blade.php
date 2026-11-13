@@ -19,7 +19,8 @@
                 <li><a href="{{ route('catalog') }}">Katalog Buku</a></li>
                 <li><a href="{{ route('publications') }}">Terbitan</a></li>
                 <li><a href="{{ route('news') }}">Berita</a></li>
-                <li><a href="{{ route('about') }}">Tentang</a></li>
+                <li><a href="{{ route('profile') }}">Profil</a></li>
+                <li><a href="{{ route('contact') }}">Kontak</a></li>
             </ul>
         </div>
         <div>

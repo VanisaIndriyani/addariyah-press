@@ -17,6 +17,36 @@
     </div>
 
     <section class="panel">
+        <h2>Contoh surat</h2>
+        <p class="muted">Berkas ini tampil di form kirim naskah dan bisa diunduh penulis.</p>
+        <form method="POST" action="{{ route('admin.resources.samples') }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="form-grid">
+                <div class="field">
+                    <label for="sample_statement">Contoh surat pernyataan</label>
+                    <input id="sample_statement" type="file" name="sample_statement" accept=".pdf,.doc,.docx,.rtf">
+                    @if ($sampleStatement)
+                        <p class="help"><a href="{{ asset($sampleStatement) }}" download>Unduh contoh saat ini</a></p>
+                    @else
+                        <p class="help">Belum ada contoh.</p>
+                    @endif
+                </div>
+                <div class="field">
+                    <label for="sample_originality">Contoh suket keaslian karya</label>
+                    <input id="sample_originality" type="file" name="sample_originality" accept=".pdf,.doc,.docx,.rtf">
+                    @if ($sampleOriginality)
+                        <p class="help"><a href="{{ asset($sampleOriginality) }}" download>Unduh contoh saat ini</a></p>
+                    @else
+                        <p class="help">Belum ada contoh.</p>
+                    @endif
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Simpan contoh surat</button>
+        </form>
+    </section>
+
+    <section class="panel">
         @include('partials.search', ['action' => route('admin.resources.index'), 'placeholder' => 'Cari judul berkas', 'searchClass' => 'crud-search'])
 
         <h2>Pedoman</h2>

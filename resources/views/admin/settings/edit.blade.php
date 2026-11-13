@@ -30,6 +30,31 @@
                 <textarea id="hero_text" name="hero_text" rows="3" required>{{ old('hero_text', $settings['hero_text']) }}</textarea>
             </div>
             <div class="field span-2">
+                <label for="band_1_title">Kolom 01 — judul</label>
+                <input id="band_1_title" name="band_1_title" value="{{ old('band_1_title', $settings['band_1_title']) }}" required>
+            </div>
+            <div class="field span-2">
+                <label for="band_1_text">Kolom 01 — teks</label>
+                <textarea id="band_1_text" name="band_1_text" rows="2" required>{{ old('band_1_text', $settings['band_1_text']) }}</textarea>
+            </div>
+            <div class="field span-2">
+                <label for="band_2_title">Kolom 02 — judul</label>
+                <input id="band_2_title" name="band_2_title" value="{{ old('band_2_title', $settings['band_2_title']) }}" required>
+            </div>
+            <div class="field span-2">
+                <label for="band_2_text">Kolom 02 — teks</label>
+                <textarea id="band_2_text" name="band_2_text" rows="2" required>{{ old('band_2_text', $settings['band_2_text']) }}</textarea>
+            </div>
+            <div class="field span-2">
+                <label for="band_3_title">Kolom 03 — judul</label>
+                <input id="band_3_title" name="band_3_title" value="{{ old('band_3_title', $settings['band_3_title']) }}" required>
+            </div>
+            <div class="field span-2">
+                <label for="band_3_text">Kolom 03 — teks</label>
+                <textarea id="band_3_text" name="band_3_text" rows="2" required>{{ old('band_3_text', $settings['band_3_text']) }}</textarea>
+                <p class="help">Tampil di beranda, di bawah slider sertifikat: 01, 02, dan 03.</p>
+            </div>
+            <div class="field span-2">
                 <label for="about">Tentang penerbit</label>
                 <textarea id="about" name="about" rows="6">{{ old('about', $settings['about']) }}</textarea>
             </div>

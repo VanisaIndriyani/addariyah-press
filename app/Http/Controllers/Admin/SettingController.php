@@ -26,6 +26,12 @@ class SettingController extends Controller
                 'address' => Site::get('address', ''),
                 'instagram' => Site::get('instagram', ''),
                 'qris_image' => Site::get('qris_image', ''),
+                'band_1_title' => Site::get('band_1_title', 'Penerbitan'),
+                'band_1_text' => Site::get('band_1_text', 'Naskah disunting, ditata, lalu disiapkan dengan ISBN dan QRCBN.'),
+                'band_2_title' => Site::get('band_2_title', 'Katalog digital'),
+                'band_2_text' => Site::get('band_2_text', 'E-book yang sudah terbit bisa dibeli. Bayar dengan QRIS, konfirmasi lewat WhatsApp.'),
+                'band_3_title' => Site::get('band_3_title', 'Naskah masuk'),
+                'band_3_text' => Site::get('band_3_text', 'Ada pedoman, template, dan formulir kirim naskah untuk penulis.'),
             ],
         ]);
     }
@@ -42,11 +48,17 @@ class SettingController extends Controller
             'email' => ['nullable', 'email', 'max:150'],
             'address' => ['nullable', 'string', 'max:500'],
             'instagram' => ['nullable', 'string', 'max:160'],
+            'band_1_title' => ['required', 'string', 'max:80'],
+            'band_1_text' => ['required', 'string', 'max:280'],
+            'band_2_title' => ['required', 'string', 'max:80'],
+            'band_2_text' => ['required', 'string', 'max:280'],
+            'band_3_title' => ['required', 'string', 'max:80'],
+            'band_3_text' => ['required', 'string', 'max:280'],
             'qris' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
             'password' => ['nullable', 'confirmed', 'min:8'],
         ]);
 
-        foreach (['site_name', 'tagline', 'hero_title', 'hero_text', 'about', 'whatsapp', 'email', 'address', 'instagram'] as $key) {
+        foreach (['site_name', 'tagline', 'hero_title', 'hero_text', 'about', 'whatsapp', 'email', 'address', 'instagram', 'band_1_title', 'band_1_text', 'band_2_title', 'band_2_text', 'band_3_title', 'band_3_text'] as $key) {
             Setting::setValue($key, $data[$key] ?? '');
         }
 

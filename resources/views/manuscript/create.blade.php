@@ -40,11 +40,21 @@
                     <textarea id="message" name="message" rows="5">{{ old('message') }}</textarea>
                 </div>
                 <div class="field">
-                    <label for="statement">Surat pernyataan</label>
+                    <div class="sample-row">
+                        <label for="statement">Surat pernyataan</label>
+                        @if ($sampleStatement)
+                            <a class="btn btn-line dark btn-small" href="{{ asset($sampleStatement) }}" download>Unduh contoh</a>
+                        @endif
+                    </div>
                     <input id="statement" type="file" name="statement" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
                 </div>
                 <div class="field">
-                    <label for="originality">Suket keaslian karya</label>
+                    <div class="sample-row">
+                        <label for="originality">Suket keaslian karya</label>
+                        @if ($sampleOriginality)
+                            <a class="btn btn-line dark btn-small" href="{{ asset($sampleOriginality) }}" download>Unduh contoh</a>
+                        @endif
+                    </div>
                     <input id="originality" type="file" name="originality" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
                 </div>
                 <div class="field">

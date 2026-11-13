@@ -22,7 +22,36 @@ class ResourceController extends Controller
             'guides' => $this->files('pedoman', $search),
             'templates' => $this->files('template', $search),
             'search' => $search,
+            'sampleStatement' => Site::get('sample_statement', ''),
+            'sampleOriginality' => Site::get('sample_originality', ''),
         ]);
+    }
+
+    public function updateSamples(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'sample_statement' => ['nullable', 'file', 'mimes:pdf,doc,docx,rtf', 'max:10240'],
+            'sample_originality' => ['nullable', 'file', 'mimes:pdf,doc,docx,rtf', 'max:10240'],
+        ]);
+
+        if (! $request->hasFile('sample_statement') && ! $request->hasFile('sample_originality')) {
+            return back()->withErrors(['sample_statement' => 'Pilih minimal satu contoh surat.'])->withInput();
+        }
+
+        foreach (['sample_statement', 'sample_originality'] as $key) {
+            if (! $request->hasFile($key)) {
+                continue;
+            }
+
+            $old = (string) Setting::getValue($key, '');
+            if ($old !== '') {
+                Uploader::deletePublic($old);
+            }
+
+            Setting::setValue($key, Uploader::publicFile($request->file($key), 'samples'));
+        }
+
+        return back()->with('success', 'Contoh surat disimpan.');
     }
 
     private function files(string $type, string $search)

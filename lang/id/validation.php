@@ -61,6 +61,11 @@ return [
         'site_name' => 'nama website',
         'qris' => 'gambar QRIS',
         'message' => 'pesan',
+        'subject' => 'subjek',
+        'role' => 'bagian',
+        'visi' => 'visi',
+        'misi' => 'misi',
+        'map_embed' => 'peta',
         'qty' => 'jumlah',
     ],
 ];

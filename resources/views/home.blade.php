@@ -72,10 +72,11 @@
                 var dots = root.querySelectorAll('[data-slider-dot]');
                 var index = 0;
                 var timer = null;
+                var phone = window.matchMedia('(max-width: 760px)');
 
                 function show(next) {
                     index = (next + slides.length) % slides.length;
-                    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+                    track.style.transform = phone.matches ? 'translateX(' + (-index * 100) + '%)' : '';
                     dots.forEach(function (dot, i) {
                         if (i === index) dot.setAttribute('aria-current', 'true');
                         else dot.removeAttribute('aria-current');
@@ -83,7 +84,11 @@
                 }
 
                 function start() {
-                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    if (!phone.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        stop();
+                        track.style.transform = '';
+                        return;
+                    }
                     stop();
                     timer = setInterval(function () { show(index + 1); }, 4500);
                 }
@@ -108,6 +113,10 @@
                 });
                 root.addEventListener('mouseenter', stop);
                 root.addEventListener('mouseleave', start);
+                phone.addEventListener('change', function () {
+                    show(0);
+                    start();
+                });
                 start();
             })();
         </script>
@@ -115,21 +124,17 @@
 
     <section class="band">
         <div class="container band-grid">
-            <div>
-                <strong>01</strong>
-                <h2>Penerbitan</h2>
-                <p>Naskah disunting, ditata, lalu disiapkan dengan ISBN dan QRCBN.</p>
-            </div>
-            <div>
-                <strong>02</strong>
-                <h2>Katalog digital</h2>
-                <p>E-book yang sudah terbit bisa dibeli. Bayar dengan QRIS, konfirmasi lewat WhatsApp.</p>
-            </div>
-            <div>
-                <strong>03</strong>
-                <h2>Naskah masuk</h2>
-                <p>Ada pedoman, template, dan formulir kirim naskah untuk penulis.</p>
-            </div>
+            @foreach ([
+                ['01', 'band_1_title', 'band_1_text', 'Penerbitan', 'Naskah disunting, ditata, lalu disiapkan dengan ISBN dan QRCBN.'],
+                ['02', 'band_2_title', 'band_2_text', 'Katalog digital', 'E-book yang sudah terbit bisa dibeli. Bayar dengan QRIS, konfirmasi lewat WhatsApp.'],
+                ['03', 'band_3_title', 'band_3_text', 'Naskah masuk', 'Ada pedoman, template, dan formulir kirim naskah untuk penulis.'],
+            ] as [$number, $titleKey, $textKey, $titleFallback, $textFallback])
+                <div>
+                    <strong>{{ $number }}</strong>
+                    <h2>{{ \App\Support\Site::get($titleKey, $titleFallback) }}</h2>
+                    <p>{{ \App\Support\Site::get($textKey, $textFallback) }}</p>
+                </div>
+            @endforeach
         </div>
     </section>
 

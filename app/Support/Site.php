@@ -52,6 +52,27 @@ class Site
         return 'https://wa.me/'.self::waNumber().'?text='.rawurlencode($text);
     }
 
+    public static function mapEmbed(?string $value): ?string
+    {
+        $value = trim(html_entity_decode((string) $value));
+        if ($value === '') {
+            return null;
+        }
+
+        if (preg_match('/src=["\']([^"\']+)["\']/i', $value, $match)) {
+            $value = html_entity_decode($match[1]);
+        }
+
+        if (! str_starts_with($value, 'https://') || filter_var($value, FILTER_VALIDATE_URL) === false) {
+            return null;
+        }
+
+        $host = strtolower((string) parse_url($value, PHP_URL_HOST));
+        $allowed = ['www.google.com', 'google.com', 'maps.google.com', 'www.google.co.id', 'www.openstreetmap.org'];
+
+        return in_array($host, $allowed, true) ? $value : null;
+    }
+
     public static function instagramUrl(): ?string
     {
         $value = trim((string) self::get('instagram', ''));
