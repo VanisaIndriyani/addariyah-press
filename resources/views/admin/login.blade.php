@@ -6,7 +6,7 @@
     <title>Masuk admin — Addariyah Press</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="{{ \App\Support\Site::logo() }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
