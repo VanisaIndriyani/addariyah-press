@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EcatalogController as AdminEcatalogController;
 use App\Http\Controllers\Admin\ManuscriptController as AdminManuscriptController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\PriceController as AdminPriceController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ResourceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManuscriptPageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\PublicationController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +36,7 @@ Route::get('/naskah/template', [ManuscriptPageController::class, 'templates'])->
 Route::get('/naskah/kirim', [ManuscriptPageController::class, 'create'])->name('manuscripts.create');
 Route::post('/naskah/kirim', [ManuscriptPageController::class, 'store'])->middleware('throttle:8,1')->name('manuscripts.store');
 Route::get('/e-catalog', [EcatalogController::class, 'index'])->name('ecatalog');
+Route::get('/harga', [PriceController::class, 'index'])->name('prices');
 Route::get('/profil', [PageController::class, 'profile'])->name('profile');
 Route::get('/tentang', [PageController::class, 'profile'])->name('about');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
@@ -81,6 +84,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/e-catalog', [AdminEcatalogController::class, 'store'])->name('ecatalog.store');
         Route::put('/e-catalog/{ecatalog}', [AdminEcatalogController::class, 'update'])->name('ecatalog.update');
         Route::delete('/e-catalog/{ecatalog}', [AdminEcatalogController::class, 'destroy'])->name('ecatalog.destroy');
+
+        Route::get('/harga', [AdminPriceController::class, 'index'])->name('prices.index');
+        Route::put('/harga/keterangan', [AdminPriceController::class, 'updateNotes'])->name('prices.notes');
+        Route::post('/harga', [AdminPriceController::class, 'store'])->name('prices.store');
+        Route::get('/harga/{package}/ubah', [AdminPriceController::class, 'edit'])->name('prices.edit');
+        Route::put('/harga/{package}', [AdminPriceController::class, 'update'])->name('prices.update');
+        Route::delete('/harga/{package}', [AdminPriceController::class, 'destroy'])->name('prices.destroy');
 
         Route::get('/slide', [SlideController::class, 'index'])->name('slides.index');
         Route::post('/slide', [SlideController::class, 'store'])->name('slides.store');

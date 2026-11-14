@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder
         $this->posts();
         $this->downloads();
         $this->ecatalog();
+        $this->call(PublishPackageSeeder::class);
     }
 
     private function books(): void

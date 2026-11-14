@@ -36,6 +36,14 @@
                     <input id="category" name="category" value="{{ old('category') }}">
                 </div>
                 <div class="field">
+                    <label for="abstract">Abstrak</label>
+                    <textarea id="abstract" name="abstract" rows="6" required>{{ old('abstract') }}</textarea>
+                </div>
+                <div class="field">
+                    <label for="page_count">Jumlah halaman</label>
+                    <input id="page_count" name="page_count" type="number" min="1" max="5000" value="{{ old('page_count') }}" required>
+                </div>
+                <div class="field">
                     <label for="message">Pesan</label>
                     <textarea id="message" name="message" rows="5">{{ old('message') }}</textarea>
                 </div>

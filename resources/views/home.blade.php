@@ -145,7 +145,7 @@
             <div class="section-head">
                 <div>
                     <p class="eyebrow">Katalog buku</p>
-                    <h2>E-book yang bisa dibeli</h2>
+                    <h2>Buku yang bisa dibeli</h2>
                 </div>
                 <a class="btn btn-line dark" href="{{ route('catalog') }}">Semua katalog</a>
             </div>

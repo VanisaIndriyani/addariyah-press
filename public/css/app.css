@@ -209,8 +209,6 @@ p { margin: 0 0 1rem; }
 .spec-grid div { background: white; border: 1px solid var(--line); border-radius: 14px; padding: .75rem .85rem; }
 .spec-grid dt { color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .spec-grid dd { margin: .2rem 0 0; font-weight: 700; }
-.spec-cover img { width: 100%; max-height: 160px; object-fit: contain; margin-top: .35rem; border-radius: 8px; background: var(--paper); }
-.spec-cover span { display: block; margin-top: .35rem; }
 .related { margin-top: 3.5rem; }
 .facts { display: grid; grid-template-columns: 140px 1fr; gap: .35rem .8rem; margin: 1rem 0 1.2rem; }
 .facts dt { color: var(--muted); }
@@ -427,6 +425,35 @@ th { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color:
 .ms-file-body { display: flex; align-items: center; gap: .75rem; min-width: 0; }
 .ms-file-mark { width: 52px; height: 52px; flex: none; display: grid; place-items: center; border-radius: 14px; background: var(--green-900); color: white; font-size: .72rem; font-weight: 800; letter-spacing: .04em; }
 .ms-file p { margin: .1rem 0 0; }
+.price-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.2rem; }
+.price-head h1 { margin: 0; }
+.price-note { margin: 0; color: var(--muted); font-style: italic; }
+.price-pack { margin: 0 0 .7rem; background: white; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.price-pack summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .95rem 1.1rem; cursor: pointer; font-weight: 700; list-style: none; }
+.price-pack summary::-webkit-details-marker { display: none; }
+.price-pack[open] summary { background: var(--green-50); color: var(--green-900); }
+.price-chevron { width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
+.price-pack[open] .price-chevron { transform: rotate(225deg); }
+.price-pack-body { padding: .4rem 1rem 1.1rem; }
+.price-pack-body h2 { text-align: center; font-size: 1.15rem; margin: 1rem 0 .6rem; }
+.price-scroll { overflow-x: auto; }
+.price-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.price-table th, .price-table td { padding: .7rem .8rem; border: 1px solid #d5e3dc; text-align: right; }
+.price-table thead th { background: var(--green-800); color: white; text-align: center; font-weight: 700; }
+.price-table thead th small { display: block; font-weight: 500; opacity: .85; }
+.price-table tbody th { text-align: left; font-weight: 650; background: white; }
+.price-table tbody tr:nth-child(even) td, .price-table tbody tr:nth-child(even) th { background: var(--green-50); }
+.price-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+.price-notes article { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.15rem 1.15rem; }
+.price-notes h2 { font-size: 1.2rem; margin: 0 0 .6rem; }
+.price-notes ul { margin: 0; padding-left: 1.1rem; }
+.price-notes li { margin: .25rem 0; }
+.paper-block { margin: 0 0 1rem; padding: 1rem; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+.paper-block-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+.paper-block-head .field { flex: 1; }
+.price-edit { width: 100%; border-collapse: collapse; min-width: 720px; }
+.price-edit th, .price-edit td { padding: .3rem; vertical-align: middle; }
+.price-edit input { width: 100%; }
 .profile-block { margin-top: 1.6rem; }
 .profile-block h2 { margin-bottom: .35rem; }
 .contact-map { margin: 1.1rem 0 1.3rem; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: white; }
@@ -503,7 +530,8 @@ th { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color:
   .admin-search { margin-left: 0; }
   .header-search { order: 3; }
   .header-bar { position: relative; }
-  .book-grid, .news-grid, .ecatalog-grid, .path-grid, .band-grid, .service-grid, .form-grid, .contact-layout { grid-template-columns: 1fr; }
+  .book-grid, .news-grid, .ecatalog-grid, .path-grid, .band-grid, .service-grid, .form-grid, .contact-layout, .price-notes { grid-template-columns: 1fr; }
+  .price-head { flex-direction: column; align-items: flex-start; }
   .contact-map iframe { height: 220px; }
   .book-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
   .news-list, .news-list .news-feature { grid-template-columns: 1fr; }

@@ -53,6 +53,10 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v12h-15z"/><path d="m8 14.5 2.2-2.2 1.6 1.6 2.4-3 2.3 3.6"/><circle cx="9" cy="9.5" r="1"/></svg>
                     E-Catalog
                 </a>
+                <a href="{{ route('admin.prices.index') }}" @class(['is-active' => request()->routeIs('admin.prices.*')])>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14M5 12h14M5 16.5h8"/><path d="M16.5 15.5h3v3h-3z"/></svg>
+                    Harga paket
+                </a>
                 <a href="{{ route('admin.profile.edit') }}" @class(['is-active' => request()->routeIs('admin.profile.*', 'admin.contacts.*')])>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.5a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"/><path d="M5.5 19.2a6.5 6.5 0 0 1 13 0"/><path d="M4.5 4.5h15v15h-15z"/></svg>
                     Profil & kontak

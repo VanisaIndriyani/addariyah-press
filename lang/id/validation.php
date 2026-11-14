@@ -61,6 +61,8 @@ return [
         'site_name' => 'nama website',
         'qris' => 'gambar QRIS',
         'message' => 'pesan',
+        'abstract' => 'abstrak',
+        'page_count' => 'jumlah halaman',
         'subject' => 'subjek',
         'role' => 'bagian',
         'visi' => 'visi',

@@ -12,6 +12,8 @@ class Manuscript extends Model
         'phone',
         'title',
         'category',
+        'abstract',
+        'page_count',
         'message',
         'statement_path',
         'originality_path',
@@ -19,4 +21,11 @@ class Manuscript extends Model
         'dummy_path',
         'file_path',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'page_count' => 'integer',
+        ];
+    }
 }

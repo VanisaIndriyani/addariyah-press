@@ -63,10 +63,20 @@
                     <dt>Kategori</dt>
                     <dd>{{ $manuscript->category ?: '—' }}</dd>
                 </div>
+                <div>
+                    <dt>Jumlah halaman</dt>
+                    <dd>{{ $manuscript->page_count ?: '—' }}</dd>
+                </div>
             </dl>
         </aside>
 
         <section class="panel">
+            <h2>Abstrak</h2>
+            @if (filled($manuscript->abstract))
+                <div class="prose">{!! \App\Support\Site::paragraphs($manuscript->abstract) !!}</div>
+            @else
+                <p class="muted">Penulis tidak menyertakan abstrak.</p>
+            @endif
             <h2>Pesan penulis</h2>
             @if (filled($manuscript->message))
                 <div class="prose">{!! \App\Support\Site::paragraphs($manuscript->message) !!}</div>

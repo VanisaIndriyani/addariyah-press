@@ -30,6 +30,7 @@
                 <li><a href="{{ route('manuscripts.templates') }}">Template</a></li>
                 <li><a href="{{ route('manuscripts.create') }}">Kirim naskah</a></li>
                 <li><a href="{{ route('ecatalog') }}">E-Catalog</a></li>
+                <li><a href="{{ route('prices') }}">Harga paket</a></li>
             </ul>
         </div>
         <div>
