@@ -22,6 +22,18 @@ class Site
         return trim(str_replace(['%', '_'], '', request()->string('q')->toString()));
     }
 
+    public static function plain(?string $text, int $limit = 160): string
+    {
+        $text = trim(preg_replace('/\s+/u', ' ', strip_tags((string) $text)) ?? '');
+
+        return Str::limit($text, $limit, '');
+    }
+
+    public static function shareImage(?string $path = null): ?string
+    {
+        return self::rasterUrl($path) ?? self::customLogo();
+    }
+
     public static function logo(bool $onDark = false): string
     {
         $custom = self::customLogo();
@@ -129,6 +141,19 @@ class Site
         $path = (string) self::get('qris_image', '');
 
         return $path !== '' && is_file(public_path($path));
+    }
+
+    private static function rasterUrl(?string $path): ?string
+    {
+        $path = ltrim(str_replace('\\', '/', (string) $path), '/');
+        if ($path === '' || ! preg_match('/\.(png|jpe?g|webp|gif)$/i', $path)) {
+            return null;
+        }
+        if (! is_file(public_path($path))) {
+            return null;
+        }
+
+        return asset($path);
     }
 
     private static function customLogo(): ?string

@@ -6,6 +6,21 @@
     <title>@yield('title', 'Addariyah Press')</title>
     <meta name="description" content="@yield('description', 'Addariyah Press menerbitkan buku, menjual e-book, dan menerima naskah.')">
     <meta name="robots" content="@yield('robots', 'index, follow')">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="{{ \App\Support\Site::get('site_name', 'Addariyah Press') }}">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'Addariyah Press')">
+    <meta property="og:description" content="@yield('description', 'Addariyah Press menerbitkan buku, menjual e-book, dan menerima naskah.')">
+    @php($shareImage = trim($__env->yieldContent('og_image')) ?: \App\Support\Site::shareImage())
+    @if ($shareImage)
+        <meta property="og:image" content="{{ $shareImage }}">
+        <meta property="og:image:secure_url" content="{{ $shareImage }}">
+        <meta name="twitter:image" content="{{ $shareImage }}">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Addariyah Press')">
+    <meta name="twitter:description" content="@yield('description', 'Addariyah Press menerbitkan buku, menjual e-book, dan menerima naskah.')">
     <meta name="theme-color" content="#0B3D2E">
     <link rel="icon" href="{{ \App\Support\Site::logo() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
