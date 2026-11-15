@@ -2,9 +2,7 @@
 
 @section('title', $book->title.' — Addariyah Press')
 @section('description', \App\Support\Site::plain($book->author.' · '.($book->description ?: $book->title)))
-@if ($image = \App\Support\Site::shareImage($book->cover_path))
-    @section('og_image', $image)
-@endif
+@section('og_path', $book->cover_path)
 
 @section('content')
     <section class="section book-section">

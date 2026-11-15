@@ -12,11 +12,16 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', 'Addariyah Press')">
     <meta property="og:description" content="@yield('description', 'Addariyah Press menerbitkan buku, menjual e-book, dan menerima naskah.')">
-    @php($shareImage = trim($__env->yieldContent('og_image')) ?: \App\Support\Site::shareImage())
-    @if ($shareImage)
-        <meta property="og:image" content="{{ $shareImage }}">
-        <meta property="og:image:secure_url" content="{{ $shareImage }}">
-        <meta name="twitter:image" content="{{ $shareImage }}">
+    @php($share = \App\Support\Site::shareMeta(trim($__env->yieldContent('og_path')) ?: null))
+    @if ($share)
+        <meta property="og:image" content="{{ $share['url'] }}">
+        <meta property="og:image:secure_url" content="{{ $share['url'] }}">
+        <meta property="og:image:type" content="{{ $share['type'] }}">
+        @if ($share['width'] > 0 && $share['height'] > 0)
+            <meta property="og:image:width" content="{{ $share['width'] }}">
+            <meta property="og:image:height" content="{{ $share['height'] }}">
+        @endif
+        <meta name="twitter:image" content="{{ $share['url'] }}">
     @endif
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('title', 'Addariyah Press')">

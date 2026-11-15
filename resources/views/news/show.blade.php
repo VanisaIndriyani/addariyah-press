@@ -3,9 +3,7 @@
 @section('title', $post->title.' — Addariyah Press')
 @section('description', \App\Support\Site::plain($post->excerpt ?: $post->body))
 @section('og_type', 'article')
-@if ($image = \App\Support\Site::shareImage($post->image_path))
-    @section('og_image', $image)
-@endif
+@section('og_path', $post->image_path)
 
 @section('content')
     <section class="section article-section">
