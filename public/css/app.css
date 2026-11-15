@@ -266,7 +266,7 @@ p { margin: 0 0 1rem; }
 .news-more { display: inline-flex; margin-top: .75rem; color: var(--green-800); font-weight: 700; text-decoration: none; }
 .news-more:hover { color: var(--green-950); }
 .article-section.section { padding-top: 1.5rem; }
-.article-section h1 { font-size: clamp(2rem, 4vw, 3.1rem); max-width: 18ch; }
+.article-section h1 { font-size: clamp(1.45rem, 2.6vw, 2.15rem); max-width: 34ch; }
 .article-cover { width: 100%; margin: .4rem 0 1.2rem; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--green-900); }
 .article-cover img { display: block; width: 100%; max-height: 380px; object-fit: cover; }
 .article-body { margin-bottom: 1.3rem; }
@@ -542,7 +542,7 @@ th { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color:
   .news-feature .news-media img, .news-feature .news-fallback { min-height: 0; aspect-ratio: 16/8; max-height: 180px; }
   .news-list .news-card-body { padding: .7rem .8rem .8rem; }
   .article-section.section { padding: .8rem 0 1.6rem; }
-  .article-section h1 { font-size: 1.65rem; }
+  .article-section h1 { font-size: 1.1rem; max-width: none; }
   .article-cover { margin: .2rem 0 .8rem; }
   .article-cover img { max-height: 150px; }
   .book-card-body { padding: .65rem .7rem .75rem; }
