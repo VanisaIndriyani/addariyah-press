@@ -16,6 +16,12 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
+    | When the files from public/ are placed directly in the domain folder
+    | (for example /home/addariya/public_html), set APP_PUBLIC_PATH to that folder.
+    */
+    'public_path' => env('APP_PUBLIC_PATH'),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
