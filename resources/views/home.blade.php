@@ -8,8 +8,8 @@
         <div class="container hero-grid">
             <div>
                 <p class="eyebrow light">Addariyah Press</p>
-                <h1>{{ \App\Support\Site::get('hero_title', 'Penerbit yang menemani naskah sampai menjadi buku.') }}</h1>
-                <p class="lead">{{ \App\Support\Site::get('hero_text', 'Katalog e-book bisa dibeli online. Pembayaran lewat QRIS, lalu konfirmasi bukti ke WhatsApp.') }}</p>
+                <h1>{{ \App\Support\Site::get('hero_title', 'Dari Ide Menjadi Karya, Dari Naskah Menjadi Buku.') }}</h1>
+                <p class="lead">{{ \App\Support\Site::get('hero_text', 'Setiap Gagasan Punya Cerita, Setiap Karya Punya Makna. Selamat datang di Addariyah Press, ruang bagi lahirnya gagasan, tumbuhnya pengetahuan, dan terciptanya karya yang bermakna.') }}</p>
                 <div class="hero-actions">
                     <a class="btn btn-light" href="{{ route('catalog') }}">Lihat katalog buku</a>
                     <a class="btn btn-line" href="{{ route('manuscripts.create') }}">Kirim naskah</a>

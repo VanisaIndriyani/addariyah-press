@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         $settings = [
             'site_name' => 'Addariyah Press',
             'tagline' => 'Menerbitkan naskah menjadi buku yang rapi, terbaca, dan siap beredar.',
-            'hero_title' => 'Penerbit yang menemani naskah sampai menjadi buku.',
-            'hero_text' => 'Katalog e-book bisa dibeli online. Pembayaran lewat QRIS, lalu konfirmasi bukti ke WhatsApp.',
+            'hero_title' => 'Dari Ide Menjadi Karya, Dari Naskah Menjadi Buku.',
+            'hero_text' => 'Setiap Gagasan Punya Cerita, Setiap Karya Punya Makna. Selamat datang di Addariyah Press, ruang bagi lahirnya gagasan, tumbuhnya pengetahuan, dan terciptanya karya yang bermakna.',
             'whatsapp' => '6282371114136',
             'email' => 'admin@addariyahpress.com',
             'address' => 'Indonesia',
