@@ -167,6 +167,13 @@ class Site
         return $path !== '' && is_file(public_path($path));
     }
 
+    public static function cssVersion(): int
+    {
+        $path = public_path('css/app.css');
+
+        return is_file($path) ? (int) filemtime($path) : 1;
+    }
+
     private static function shareFile(?string $path): ?string
     {
         $path = ltrim(str_replace('\\', '/', (string) $path), '/');
